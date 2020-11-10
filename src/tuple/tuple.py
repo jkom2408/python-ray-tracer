@@ -22,7 +22,13 @@ class Tuple:
         return Tuple(x, y, z, 0.0)
 
     def __eq__(self, other):
-        return self.x == other.x and \
-        self.y == other.y and \
-        self.z == other.z and \
-        self.w == other.w
+        return \
+        self.__float_equals(self.x, other.x) and \
+        self.__float_equals(self.y, other.y) and \
+        self.__float_equals(self.z, other.z) and \
+        self.__float_equals(self.w, other.w)
+
+    @staticmethod
+    def __float_equals(a, b):
+        EPSILON = 0.00001
+        return abs(a - b) < EPSILON

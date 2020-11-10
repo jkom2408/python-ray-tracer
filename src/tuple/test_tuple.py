@@ -1,4 +1,5 @@
 import unittest
+import math
 from tuple import Tuple
 
 class TestCalc(unittest.TestCase):
@@ -70,13 +71,52 @@ class TestCalc(unittest.TestCase):
         a = Tuple(1, -2, 3, -4)
         self.assertEqual(a * 3.5 == Tuple(3.5, -7, 10.5, -14), True)
 
-    def test_multiply_vector_by_fraction(self):
         a = Tuple(1, -2, 3, -4)
         self.assertEqual(a * 0.5 == Tuple(0.5, -1, 1.5, -2), True)
 
     def test_divide_vector_by_fraction(self):
         a = Tuple(1, -2, 3, -4)
         self.assertEqual(a / 2 == Tuple(0.5, -1, 1.5, -2), True)
+
+    def test_vector_magnitude(self):
+        v = Tuple.vector(1, 0, 0)
+        self.assertEqual(Tuple.float_eq(v.magnitude(), 1), True)
+
+        v = Tuple.vector(0, 1, 0)
+        self.assertEqual(Tuple.float_eq(v.magnitude(), 1), True)
+
+        v = Tuple.vector(1, 2, 3)
+        self.assertEqual(Tuple.float_eq(v.magnitude(), math.sqrt(14)), True)
+
+        v = Tuple.vector(-1, -2, -3)
+        self.assertEqual(Tuple.float_eq(v.magnitude(), math.sqrt(14)), True)
+
+    def test_normalization(self):
+        v = Tuple.vector(4, 0, 0)
+        self.assertEqual(v.normalize() == Tuple.vector(1, 0, 0), True)
+
+        v = Tuple.vector(1, 2, 3)
+        self.assertEqual( \
+            # vector(1/√14, 2/√14, 3/√14)
+            v.normalize() == Tuple.vector(0.26726, 0.53452, 0.80178), \
+            True \
+        )
+
+        # magnitude of a normalized vector equals 1
+        v = Tuple.vector(1, 2, 3)
+        norm = v.normalize()
+        self.assertEqual(norm.magnitude() == 1, True)
+
+    def test_dot_product(self):
+        a = Tuple.vector(1, 2, 3)
+        b = Tuple.vector(2, 3, 4)
+        self.assertEqual(a.dot(b) == 20, True)
+
+    def test_cross_product(self):
+        a = Tuple.vector(1, 2, 3)
+        b = Tuple.vector(2, 3, 4)
+        self.assertEqual(a.cross(b) == Tuple.vector(-1, 2, -1), True)
+        self.assertEqual(b.cross(a) == Tuple.vector(1, -2, 1), True)
 
 if __name__ == '__main__':
     unittest.main()

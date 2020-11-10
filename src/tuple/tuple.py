@@ -15,10 +15,10 @@ class Tuple:
         return self.w == 1.0
 
     def magnitude(self):
-        return math.sqrt( \
-            self.x * self.x + \
-            self.y * self.y + \
-            self.z * self.z + \
+        return math.sqrt(
+            self.x * self.x +
+            self.y * self.y +
+            self.z * self.z + 
             self.w * self.w)
 
     def normalize(self):
@@ -31,15 +31,15 @@ class Tuple:
 
     def dot(self, other):
         return ( \
-            self.x * other.x + \
-            self.y * other.y + \
-            self.z * other.z + \
+            self.x * other.x +
+            self.y * other.y +
+            self.z * other.z +
             self.w * other.w)
 
     def cross(self, other):
-        return Tuple.vector( \
-            self.y * other.z - self.z * other.y, \
-            self.z * other.x - self.x * other.z, \
+        return Tuple.vector(
+            self.y * other.z - self.z * other.y,
+            self.z * other.x - self.x * other.z,
             self.x * other.y - self.y * other.x)
 
     @staticmethod
@@ -63,17 +63,17 @@ class Tuple:
             self.float_eq(self.w, other.w)
 
     def __add__(self, other):
-        return Tuple( \
-            self.x + other.x, \
-            self.y + other.y, \
-            self.z + other.z, \
+        return Tuple( 
+            self.x + other.x, 
+            self.y + other.y, 
+            self.z + other.z, 
             self.w + other.w)
 
     def __sub__(self, other):
-        return Tuple( \
-            self.x - other.x, \
-            self.y - other.y, \
-            self.z - other.z, \
+        return Tuple( 
+            self.x - other.x, 
+            self.y - other.y, 
+            self.z - other.z, 
             self.w - other.w)
 
     def __neg__(self):
@@ -81,14 +81,14 @@ class Tuple:
 
     def __mul__(self, other):
         return Tuple(
-            self.x * other, \
-            self.y * other, \
-            self.z * other, \
+            self.x * other, 
+            self.y * other, 
+            self.z * other, 
             self.w * other)
 
     def __truediv__(self, other):
         return Tuple(
-            self.x / other, \
-            self.y / other, \
-            self.z / other, \
+            self.x / other, 
+            self.y / other, 
+            self.z / other, 
             self.w / other)

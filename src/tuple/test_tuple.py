@@ -96,11 +96,10 @@ class TestCalc(unittest.TestCase):
         self.assertEqual(v.normalize() == Tuple.vector(1, 0, 0), True)
 
         v = Tuple.vector(1, 2, 3)
-        self.assertEqual( \
+        self.assertEqual(
             # vector(1/√14, 2/√14, 3/√14)
-            v.normalize() == Tuple.vector(0.26726, 0.53452, 0.80178), \
-            True \
-        )
+            v.normalize() == Tuple.vector(0.26726, 0.53452, 0.80178),
+            True)
 
         # magnitude of a normalized vector equals 1
         v = Tuple.vector(1, 2, 3)

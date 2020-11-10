@@ -44,5 +44,15 @@ class TestCalc(unittest.TestCase):
         a2 = Tuple(-2, 3, 1, 0)
         self.assertEqual(a1 + a2 == Tuple(1, 1, 6, 1), True)
 
+    def test_subtract_two_points(self):
+        p1 = Tuple.point(3, 2, 1)
+        p2 = Tuple.point(5, 6, 7)
+        self.assertEqual(p1 - p2 == Tuple.vector(-2, -4, -6), True)
+
+    def test_subtract_vector_from_point(self):
+        p = Tuple.point(3, 2, 1)
+        v = Tuple.vector(5, 6, 7)
+        self.assertEqual(p - v == Tuple.point(-2, -4, -6), True)
+
 if __name__ == '__main__':
     unittest.main()

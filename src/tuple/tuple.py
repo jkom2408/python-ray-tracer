@@ -28,6 +28,13 @@ class Tuple:
             self.z + other.z, \
             self.w + other.w)
 
+    def __sub__(self, other):
+        return Tuple( \
+            self.x - other.x, \
+            self.y - other.y, \
+            self.z - other.z, \
+            self.w - other.w)
+
     def __eq__(self, other):
         return \
             self.__float_equals(self.x, other.x) and \

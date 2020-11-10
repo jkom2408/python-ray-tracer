@@ -21,12 +21,19 @@ class Tuple:
     def vector(x, y, z):
         return Tuple(x, y, z, 0.0)
 
+    def __add__(self, other):
+        return Tuple( \
+            self.x + other.x, \
+            self.y + other.y, \
+            self.z + other.z, \
+            self.w + other.w)
+
     def __eq__(self, other):
         return \
-        self.__float_equals(self.x, other.x) and \
-        self.__float_equals(self.y, other.y) and \
-        self.__float_equals(self.z, other.z) and \
-        self.__float_equals(self.w, other.w)
+            self.__float_equals(self.x, other.x) and \
+            self.__float_equals(self.y, other.y) and \
+            self.__float_equals(self.z, other.z) and \
+            self.__float_equals(self.w, other.w)
 
     @staticmethod
     def __float_equals(a, b):

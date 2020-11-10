@@ -21,6 +21,11 @@ class Tuple:
     def vector(x, y, z):
         return Tuple(x, y, z, 0.0)
 
+    @staticmethod
+    def __float_equals(a, b):
+        EPSILON = 0.00001
+        return abs(a - b) < EPSILON
+
     def __eq__(self, other):
         return \
             self.__float_equals(self.x, other.x) and \
@@ -58,8 +63,3 @@ class Tuple:
             self.y / other, \
             self.z / other, \
             self.w / other)
-
-    @staticmethod
-    def __float_equals(a, b):
-        EPSILON = 0.00001
-        return abs(a - b) < EPSILON

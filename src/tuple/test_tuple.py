@@ -62,5 +62,21 @@ class TestCalc(unittest.TestCase):
         v2 = Tuple.vector(5, 6, 7)
         self.assertEqual(v1 - v2 == Tuple.vector(-2, -4, -6), True)
 
+    def test_negating_a_tuple(self):
+        a = Tuple(1, -2, 3, -4)
+        self.assertEqual(-a == Tuple(-1, 2, -3, 4), True)
+
+    def test_multiply_vector_by_scalar(self):
+        a = Tuple(1, -2, 3, -4)
+        self.assertEqual(a * 3.5 == Tuple(3.5, -7, 10.5, -14), True)
+
+    def test_multiply_vector_by_fraction(self):
+        a = Tuple(1, -2, 3, -4)
+        self.assertEqual(a * 0.5 == Tuple(0.5, -1, 1.5, -2), True)
+
+    def test_divide_vector_by_fraction(self):
+        a = Tuple(1, -2, 3, -4)
+        self.assertEqual(a / 2 == Tuple(0.5, -1, 1.5, -2), True)
+
 if __name__ == '__main__':
     unittest.main()

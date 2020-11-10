@@ -21,6 +21,13 @@ class Tuple:
     def vector(x, y, z):
         return Tuple(x, y, z, 0.0)
 
+    def __eq__(self, other):
+        return \
+            self.__float_equals(self.x, other.x) and \
+            self.__float_equals(self.y, other.y) and \
+            self.__float_equals(self.z, other.z) and \
+            self.__float_equals(self.w, other.w)
+
     def __add__(self, other):
         return Tuple( \
             self.x + other.x, \
@@ -35,12 +42,22 @@ class Tuple:
             self.z - other.z, \
             self.w - other.w)
 
-    def __eq__(self, other):
-        return \
-            self.__float_equals(self.x, other.x) and \
-            self.__float_equals(self.y, other.y) and \
-            self.__float_equals(self.z, other.z) and \
-            self.__float_equals(self.w, other.w)
+    def __neg__(self):
+        return Tuple(-self.x, -self.y, -self.z, -self.w)
+
+    def __mul__(self, other):
+        return Tuple(
+            self.x * other, \
+            self.y * other, \
+            self.z * other, \
+            self.w * other)
+
+    def __truediv__(self, other):
+        return Tuple(
+            self.x / other, \
+            self.y / other, \
+            self.z / other, \
+            self.w / other)
 
     @staticmethod
     def __float_equals(a, b):

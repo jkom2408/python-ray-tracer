@@ -23,14 +23,14 @@ class Tuple:
 
     def normalize(self):
         magnitude = self.magnitude()
-        return Tuple(\
+        return Tuple(
             self.x / magnitude,
             self.y / magnitude,
             self.z / magnitude,
             self.w / magnitude)
 
     def dot(self, other):
-        return ( \
+        return (
             self.x * other.x +
             self.y * other.y +
             self.z * other.z +
@@ -56,11 +56,11 @@ class Tuple:
         return abs(a - b) < EPSILON
 
     def __eq__(self, other):
-        return \
-            self.float_eq(self.x, other.x) and \
-            self.float_eq(self.y, other.y) and \
-            self.float_eq(self.z, other.z) and \
-            self.float_eq(self.w, other.w)
+        return (
+            self.float_eq(self.x, other.x) and 
+            self.float_eq(self.y, other.y) and
+            self.float_eq(self.z, other.z) and
+            self.float_eq(self.w, other.w))
 
     def __add__(self, other):
         return Tuple( 

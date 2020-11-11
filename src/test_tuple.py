@@ -1,6 +1,10 @@
 import unittest
 import math
-from tuple import Tuple
+from rtmath.tuple import Tuple
+from rtmath.vector import Vector
+from rtmath.point import Point
+from rtmath.color import Color
+
 
 class TestCalc(unittest.TestCase):
 
@@ -17,8 +21,8 @@ class TestCalc(unittest.TestCase):
         self.assertEqual(tuple.y, -4.2)
         self.assertEqual(tuple.z, 3.1)
         self.assertEqual(tuple.w, 1.0)
-        self.assertEqual(tuple.isPoint(), False)
-        self.assertEqual(tuple.isVector(), True)
+        self.assertEqual(tuple.isPoint(), True)
+        self.assertEqual(tuple.isVector(), False)
 
     # A tuple with w=0 is a vector
     def test_is_vector(self):
@@ -27,17 +31,17 @@ class TestCalc(unittest.TestCase):
         self.assertEqual(tuple.y, -4.2)
         self.assertEqual(tuple.z, 3.1)
         self.assertEqual(tuple.w, 0.0)
-        self.assertEqual(tuple.isPoint(), True)
-        self.assertEqual(tuple.isVector(), False)
+        self.assertEqual(tuple.isPoint(), False)
+        self.assertEqual(tuple.isVector(), True)
 
     # point() creates tuples with w=1
     def test_point_creates_tuple_wth_w_equals_1(self):
-        point = Tuple.point(4, -4, 3)
+        point = Point(4, -4, 3)
         self.assertEqual(point == Tuple(4, -4, 3, 1), True)
 
     # vector() creates tuples with w=0
     def test_vector_creates_tuple_wth_w_equals_0(self):
-        vector = Tuple.vector(4, -4, 3)
+        vector = Vector(4, -4, 3)
         self.assertEqual(vector == Tuple(4, -4, 3, 0), True)
 
     def test_add_two_tuples(self):
@@ -47,21 +51,21 @@ class TestCalc(unittest.TestCase):
 
     # two points should cancel each other out to become a vector
     def test_subtract_two_points(self):
-        p1 = Tuple.point(3, 2, 1)
-        p2 = Tuple.point(5, 6, 7)
-        self.assertEqual(p1 - p2 == Tuple.vector(-2, -4, -6), True)
+        p1 = Point(3, 2, 1)
+        p2 = Point(5, 6, 7)
+        self.assertEqual(p1 - p2 == Vector(-2, -4, -6), True)
 
     # subtract vector from point should give a different point
     def test_subtract_vector_from_point(self):
-        p = Tuple.point(3, 2, 1)
-        v = Tuple.vector(5, 6, 7)
-        self.assertEqual(p - v == Tuple.point(-2, -4, -6), True)
+        p = Point(3, 2, 1)
+        v = Vector(5, 6, 7)
+        self.assertEqual(p - v == Point(-2, -4, -6), True)
 
     # subtracting two vectors results in a vector
     def test_subtract_vector_from_vector(self):
-        v1 = Tuple.vector(3, 2, 1)
-        v2 = Tuple.vector(5, 6, 7)
-        self.assertEqual(v1 - v2 == Tuple.vector(-2, -4, -6), True)
+        v1 = Vector(3, 2, 1)
+        v2 = Vector(5, 6, 7)
+        self.assertEqual(v1 - v2 == Vector(-2, -4, -6), True)
 
     def test_negating_a_tuple(self):
         a = Tuple(1, -2, 3, -4)
@@ -79,43 +83,51 @@ class TestCalc(unittest.TestCase):
         self.assertEqual(a / 2 == Tuple(0.5, -1, 1.5, -2), True)
 
     def test_vector_magnitude(self):
-        v = Tuple.vector(1, 0, 0)
+        v = Vector(1, 0, 0)
         self.assertEqual(Tuple.float_eq(v.magnitude(), 1), True)
 
-        v = Tuple.vector(0, 1, 0)
+        v = Vector(0, 1, 0)
         self.assertEqual(Tuple.float_eq(v.magnitude(), 1), True)
 
-        v = Tuple.vector(1, 2, 3)
+        v = Vector(1, 2, 3)
         self.assertEqual(Tuple.float_eq(v.magnitude(), math.sqrt(14)), True)
 
-        v = Tuple.vector(-1, -2, -3)
+        v = Vector(-1, -2, -3)
         self.assertEqual(Tuple.float_eq(v.magnitude(), math.sqrt(14)), True)
 
     def test_normalization(self):
-        v = Tuple.vector(4, 0, 0)
-        self.assertEqual(v.normalize() == Tuple.vector(1, 0, 0), True)
+        v = Vector(4, 0, 0)
+        self.assertEqual(v.normalize() == Vector(1, 0, 0), True)
 
-        v = Tuple.vector(1, 2, 3)
+        v = Vector(1, 2, 3)
         self.assertEqual(
             # vector(1/√14, 2/√14, 3/√14)
-            v.normalize() == Tuple.vector(0.26726, 0.53452, 0.80178),
+            v.normalize() == Vector(0.26726, 0.53452, 0.80178),
             True)
 
         # magnitude of a normalized vector equals 1
-        v = Tuple.vector(1, 2, 3)
+        v = Vector(1, 2, 3)
         norm = v.normalize()
         self.assertEqual(norm.magnitude() == 1, True)
 
     def test_dot_product(self):
-        a = Tuple.vector(1, 2, 3)
-        b = Tuple.vector(2, 3, 4)
+        a = Vector(1, 2, 3)
+        b = Vector(2, 3, 4)
         self.assertEqual(a.dot(b) == 20, True)
 
     def test_cross_product(self):
-        a = Tuple.vector(1, 2, 3)
-        b = Tuple.vector(2, 3, 4)
-        self.assertEqual(a.cross(b) == Tuple.vector(-1, 2, -1), True)
-        self.assertEqual(b.cross(a) == Tuple.vector(1, -2, 1), True)
+        a = Vector(1, 2, 3)
+        b = Vector(2, 3, 4)
+        self.assertEqual(a.cross(b) == Vector(-1, 2, -1), True)
+        self.assertEqual(b.cross(a) == Vector(1, -2, 1), True)
+
+    # colors are (red, green, blue) tuples
+    def test_color(self):
+        c = Color(-0.5, 0.4, 1.7)
+        self.assertEqual(c.r() == -0.5, True)
+        self.assertEqual(c.g() == 0.4, True)
+        self.assertEqual(c.b() == 1.7, True)
+
 
 if __name__ == '__main__':
     unittest.main()

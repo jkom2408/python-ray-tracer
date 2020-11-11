@@ -2,6 +2,7 @@ from projectile import Projectile
 from environment import Environment
 from tuple.tuple import Tuple
 
+
 class FunExercise:
 
     @staticmethod
@@ -19,6 +20,7 @@ class FunExercise:
         position = proj.position + proj.velocity
         velocity = proj.velocity + env.gravity + env.wind
         return Projectile(position, velocity)
+
 
 if __name__ == '__main__':
     FunExercise.run()

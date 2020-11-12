@@ -6,7 +6,7 @@ from rtmath.point import Point
 from rtmath.color import Color
 
 
-class TestCalc(unittest.TestCase):
+class TestTuple(unittest.TestCase):
 
     def setUp(self):
         pass

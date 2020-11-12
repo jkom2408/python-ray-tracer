@@ -1,4 +1,4 @@
-In progress ray tracer implemenation - 10% complete
+(In progress) ray tracer implemenation
 
 Render beautiful scenes using the [ray tracing](https://en.wikipedia.org/wiki/Ray_tracing_(graphics)) technique.
 

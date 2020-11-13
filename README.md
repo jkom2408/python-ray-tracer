@@ -6,15 +6,16 @@ install instructions:
 
 1. clone/download source
 2. cd into source dir
-3. create a virtual environment: python3 -m venv venv/ray-env
-4. source venv/ray-env/bin/activate
-5. pip install -e .
-6. python3 -m unittest discover -s ./test/*
-7. python3 fun_exercise.py 
+3. create a virtual environment: $ python3 -m venv venv/ray-env
+4. $ source venv/ray-env/bin/activate
+5. $ pip install -e .
+6. $ python3 -m unittest discover -s ./test/*
 
 current output:
 
 Using the vector and point classes to make a projectile simulation: launch a projectile based on position, velocity, gravity, wind direction
+
+$ python3 fun_exercise.py 
 
 ```
 x: 0.7071067811865475, y: 1.7071067811865475, z: 0.0

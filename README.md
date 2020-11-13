@@ -1,4 +1,4 @@
-(In progress) ray tracer implemenation
+(In progress)
 
 Render beautiful scenes using the [ray tracing](https://en.wikipedia.org/wiki/Ray_tracing_(graphics)) technique.
 

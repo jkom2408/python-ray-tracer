@@ -1,7 +1,7 @@
 import unittest
-from rtmath.tuple import Tuple
-from rtmath.vector import Vector
-from rtmath.point import Point
+from raytracer.rtmath.tuple import Tuple
+from raytracer.rtmath.vector import Vector
+from raytracer.rtmath.point import Point
 
 
 class TestPoint(unittest.TestCase):

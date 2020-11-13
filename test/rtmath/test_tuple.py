@@ -1,5 +1,5 @@
 import unittest
-from rtmath.tuple import Tuple
+from raytracer.rtmath.tuple import Tuple
 
 
 class TestTuple(unittest.TestCase):

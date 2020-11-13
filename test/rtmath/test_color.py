@@ -1,5 +1,5 @@
 import unittest
-from rtmath.color import Color
+from raytracer.rtmath.color import Color
 
 
 class TestColor(unittest.TestCase):

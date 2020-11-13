@@ -37,5 +37,12 @@ class Canvas:
 
     def to_ppm(self):
         header = f'P3\n{self.width} {self.height}\n255'
-        body = '\n'.join(' '.join(' '.join(map(str, map(Canvas.to_byte, c))) for c in h) for h in self.canvas)
+        body = (
+            '\n'.join(
+                ' '.join(
+                    ' '.join(
+                        map(str, map(Canvas.to_byte, c))
+                    ) for c in h
+                ) for h in self.canvas)
+            )
         return header + '\n' + body

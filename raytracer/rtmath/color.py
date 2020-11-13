@@ -36,9 +36,8 @@ class Color(Tuple):
 
     def __mul__(self, other):
         if isinstance(other, Number):
-            res = super().__mul__(other)
-            return Color.new(res)
-        elif type(other) is Color:
+            return Color.new(super().__mul__(other))
+        elif isinstance(other, Color):
             return Color.hadamard_product(self, other)
         else:
             raise TypeError
@@ -46,6 +45,6 @@ class Color(Tuple):
     @staticmethod
     def hadamard_product(c1, c2):
         return Color(
-                c1.x * c2.x,
-                c1.y * c2.y,
-                c1.z * c2.z)
+            c1.x * c2.x,
+            c1.y * c2.y,
+            c1.z * c2.z)

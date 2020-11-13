@@ -14,6 +14,7 @@ install instructions:
 
 current output:
 
+Using the vector and point classes to make a projectile simulation:
 Launch a projectile based on position, velocity, gravity, wind direction
 
 ```

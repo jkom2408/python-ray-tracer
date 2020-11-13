@@ -23,3 +23,7 @@ class TestCanvas(unittest.TestCase):
         canvas.write_pixel(2, 3, red)
         self.assertTrue(canvas.pixel_at(2, 3) == red)
 
+    def test_construct_ppm_header(self):
+        canvas = Canvas(5, 3)
+        ppm = canvas.to_ppm()
+        self.assertTrue(ppm == 'P3\n5 3\n255')

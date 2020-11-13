@@ -25,3 +25,6 @@ class Canvas:
 
     def sum(self):
         return sum(sum(sum(c) for c in w) for w in self.canvas)
+
+    def to_ppm(self):
+        return f'P3\n{self.width} {self.height}\n255'

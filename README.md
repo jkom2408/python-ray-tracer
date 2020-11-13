@@ -9,7 +9,7 @@ install instructions:
 3. create a virtual environment: python3 -m venv venv/ray-env
 4. source venv/ray-env/bin/activate
 5. pip install -e .
-6. python3 -m unittest discover -s ./raytracer/test/*
+6. python3 -m unittest discover -s ./test/*
 7. python3 fun_exercise.py 
 
 current output:

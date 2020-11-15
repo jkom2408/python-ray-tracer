@@ -36,3 +36,7 @@ x: 9.556601717798213, y: 1.1066017177982128, z: 10.5
 x: 10.11370849898476, y: 0.3137084989847604, z: 12.0
 x: 10.660815280171308, y: -0.579184719828692, z: 13.6      
 ```
+
+Also, it is able to map these points to an in-memory canvas object, and then save the canvas object to disk as a .ppm file:
+
+![alt text](https://user-images.githubusercontent.com/52117545/99179866-422c7a00-26d6-11eb-8255-e9caf114f27e.png "Screenshot of the PPM file when opened with an image editor")

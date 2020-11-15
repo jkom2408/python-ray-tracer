@@ -21,9 +21,6 @@ class TestCanvas(unittest.TestCase):
         canvas = Canvas(10, 20)
         red = Color(1, 0, 0)
         canvas.write_pixel(2, 3, red)
-        print(canvas.pixel_at(2, 3).r())
-        print(canvas.pixel_at(2, 3).g())
-        print(canvas.pixel_at(2, 3).b())
         self.assertTrue(canvas.pixel_at(2, 3) == red)
 
     def test_construct_ppm_header(self):
@@ -47,3 +44,12 @@ class TestCanvas(unittest.TestCase):
         self.assertTrue(lines[3] == '255 0 0 0 0 0 0 0 0 0 0 0 0 0 0')
         self.assertTrue(lines[4] == '0 0 0 0 0 0 0 128 0 0 0 0 0 0 0')
         self.assertTrue(lines[5] == '0 0 0 0 0 0 0 0 0 0 0 0 0 0 255')
+
+    def test_wrap_ppm_pixel_data_at_70_chars(self):
+        canvas = Canvas(10, 2, Color(1, 0.8, 0.6))
+        ppm = canvas.to_ppm()
+        lines = ppm.split('\n')
+        self.assertTrue(lines[3] == '255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204')
+        self.assertTrue(lines[4] == '153 255 204 153 255 204 153 255 204 153 255 204 153')
+        self.assertTrue(lines[5] == '255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204')
+        self.assertTrue(lines[6] == '153 255 204 153 255 204 153 255 204 153 255 204 153')

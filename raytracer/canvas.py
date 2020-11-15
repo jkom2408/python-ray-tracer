@@ -13,9 +13,12 @@ class Canvas:
             for h in range(height)]
 
     def write_pixel(self, x, y, color):
-        self.canvas[y][x][0] = color.r()
-        self.canvas[y][x][1] = color.g()
-        self.canvas[y][x][2] = color.b()
+        ix = int(x)
+        iy = int(y)
+        if ix < self.width and iy < self.height:
+            self.canvas[iy][ix][0] = color.r()
+            self.canvas[iy][ix][1] = color.g()
+            self.canvas[iy][ix][2] = color.b()
 
     def pixel_at(self, x, y):
         return Color(

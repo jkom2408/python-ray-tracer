@@ -53,3 +53,8 @@ class TestCanvas(unittest.TestCase):
         self.assertTrue(lines[4] == '153 255 204 153 255 204 153 255 204 153 255 204 153')
         self.assertTrue(lines[5] == '255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204')
         self.assertTrue(lines[6] == '153 255 204 153 255 204 153 255 204 153 255 204 153')
+    
+    def test_ppm_ends_with_newline_char(self):
+        canvas = Canvas(5, 3)
+        ppm = canvas.to_ppm()
+        self.assertTrue(ppm[len(ppm) - 1] == '\n')

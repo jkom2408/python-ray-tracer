@@ -111,3 +111,17 @@ class TestMatrix(unittest.TestCase):
             [4, 8, 16, 32]
         ])
         self.assertTrue(Matrix.identity() * a == a)
+
+    def test_transpose(self):
+        a = Matrix([
+            [0, 9, 3, 0],
+            [9, 8, 0, 8],
+            [1, 8, 5, 3],
+            [0, 0, 5, 8]
+        ])
+        self.assertTrue(Matrix.transpose(a) == Matrix([
+            [0, 9, 1, 0],
+            [9, 8, 8, 0],
+            [3, 0, 5, 5],
+            [0, 8, 3, 8]
+        ]))

@@ -83,3 +83,9 @@ class Matrix:
             [0, 0, 1, 0],
             [0, 0, 0, 1]
         ])
+
+    @staticmethod
+    def transpose(m):
+        return Matrix([
+            [m[r][c] for r in range(len(m))] for c in range(len(m[0]))
+        ])

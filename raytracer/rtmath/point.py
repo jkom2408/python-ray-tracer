@@ -1,5 +1,5 @@
-from .tuple import Tuple
-from .vector import Vector
+from raytracer.rtmath.tuple import Tuple
+from raytracer.rtmath.vector import Vector
 
 
 class Point(Tuple):

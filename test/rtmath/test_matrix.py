@@ -102,3 +102,12 @@ class TestMatrix(unittest.TestCase):
         ])
         b = Tuple(1, 2, 3, 1)
         self.assertTrue(a * b == Tuple(18, 24, 33, 1))
+
+    def test_identity_matrix(self):
+        a = Matrix([
+            [0, 1, 2, 4],
+            [1, 2, 4, 8],
+            [2, 4, 8, 16],
+            [4, 8, 16, 32]
+        ])
+        self.assertTrue(Matrix.identity() * a == a)

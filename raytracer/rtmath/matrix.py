@@ -12,6 +12,9 @@ class Matrix:
     def __getitem__(self, i):
         return self.m[i]
 
+    def __len__(self):
+        return len(self.m)
+
     def __eq__(self, m):
         return (
             self.float_eq(self[0][0], m[0][0]) and
@@ -67,10 +70,16 @@ class Matrix:
             a[3][0] * b.x + a[3][1] * b.y + a[3][2] * b.z + a[3][3] * b.w
         )
 
-    def __len__(self):
-        return len(self.m)
-
     @staticmethod
     def float_eq(a, b):
         EPSILON = 0.00001
         return abs(a - b) < EPSILON
+
+    @staticmethod
+    def identity():
+        return Matrix([
+            [1, 0, 0, 0],
+            [0, 1, 0, 0],
+            [0, 0, 1, 0],
+            [0, 0, 0, 1]
+        ])

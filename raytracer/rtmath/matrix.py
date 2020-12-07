@@ -67,8 +67,16 @@ class Matrix:
             [0, 0, 0, 1]
         ])
 
-    @staticmethod
-    def transpose(m):
+    def transpose(self):
         return Matrix([
-            [m[r][c] for r in range(len(m))] for c in range(len(m[0]))
+            [self[r][c] for r in range(len(self))] for c in range(len(self[0]))
         ])
+
+    def determinant(self):
+        return self[0][0] * self[1][1] - self[0][1] * self[1][0]
+
+    def submatrix(self, row, col):
+        del(self.m[row])
+        for r in self.m:
+            del(r[col])
+        return self

@@ -128,3 +128,24 @@ class TestMatrix(unittest.TestCase):
 
     def test_transpose_identity(self):
         self.assertEqual(Matrix.identity().transpose(), Matrix.identity())
+
+    def test_determinant_2x2(self):
+        a = Matrix([
+            [1, 5],
+            [-3, 2]
+        ])
+        self.assertEqual(Matrix.determinant(a), 17)
+
+    def test_submatrix_3x3(self):
+        a = Matrix([
+            [1, 5, 0],
+            [-3, 2, 7],
+            [0, 6, -3]
+        ])
+        self.assertEqual(
+            a.submatrix(0, 2),
+            Matrix([
+                [-3, 2],
+                [0, 6]]
+            )
+        )

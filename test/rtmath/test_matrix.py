@@ -125,3 +125,8 @@ class TestMatrix(unittest.TestCase):
             [3, 0, 5, 5],
             [0, 8, 3, 8]
         ]))
+
+    def test_transpose_identity(self):
+        a = Matrix.identity()
+        b = Matrix.transpose(a)
+        self.assertEqual(b, Matrix.identity())

@@ -149,3 +149,18 @@ class TestMatrix(unittest.TestCase):
                 [0, 6]]
             )
         )
+
+    def test_submarix_4x4(self):
+        a = Matrix([
+            [-6, 1, 1, 6],
+            [-8, 5, 8, 6],
+            [-1, 0, 8, 2],
+            [-7, 1, -1, 1]
+        ])
+        self.assertEqual(
+            a.submatrix(2, 1),
+            Matrix([
+                [-6, 1, 6],
+                [-8, 8, 6],
+                [-7, -1, 1]
+            ]))

@@ -15,25 +15,8 @@ class Matrix:
     def __len__(self):
         return len(self.m)
 
-    def __eq__(self, m):
-        return (
-            self.float_eq(self[0][0], m[0][0]) and
-            self.float_eq(self[0][1], m[0][1]) and
-            self.float_eq(self[0][2], m[0][2]) and
-            self.float_eq(self[0][3], m[0][3]) and
-            self.float_eq(self[1][0], m[1][0]) and
-            self.float_eq(self[1][1], m[1][1]) and
-            self.float_eq(self[1][2], m[1][2]) and
-            self.float_eq(self[1][3], m[1][3]) and
-            self.float_eq(self[2][0], m[2][0]) and
-            self.float_eq(self[2][1], m[2][1]) and
-            self.float_eq(self[2][2], m[2][2]) and
-            self.float_eq(self[2][3], m[2][3]) and
-            self.float_eq(self[3][0], m[3][0]) and
-            self.float_eq(self[3][1], m[3][1]) and
-            self.float_eq(self[3][2], m[3][2]) and
-            self.float_eq(self[3][3], m[3][3])
-        )
+    def __eq__(self, other):
+        return self.m == other.m
 
     def __mul__(self, other):
         if isinstance(other, Matrix):

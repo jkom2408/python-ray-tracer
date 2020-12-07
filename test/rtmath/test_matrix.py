@@ -50,7 +50,7 @@ class TestMatrix(unittest.TestCase):
                 [9, 8, 7, 6],
                 [5, 4, 3, 2]
             ])
-        b = ([
+        b = Matrix([
                 [1, 2, 3, 4],
                 [5, 6, 7, 8],
                 [9, 8, 7, 6],
@@ -65,7 +65,7 @@ class TestMatrix(unittest.TestCase):
                 [9, 8, 7, 6],
                 [5, 4, 3, 2]
             ])
-        b = ([
+        b = Matrix([
                 [2, 3, 4, 5],
                 [6, 7, 8, 9],
                 [8, 7, 6, 5],
@@ -119,7 +119,7 @@ class TestMatrix(unittest.TestCase):
             [1, 8, 5, 3],
             [0, 0, 5, 8]
         ])
-        self.assertEqual(Matrix.transpose(a), Matrix([
+        self.assertEqual(a.transpose(), Matrix([
             [0, 9, 1, 0],
             [9, 8, 8, 0],
             [3, 0, 5, 5],
@@ -127,6 +127,4 @@ class TestMatrix(unittest.TestCase):
         ]))
 
     def test_transpose_identity(self):
-        a = Matrix.identity()
-        b = Matrix.transpose(a)
-        self.assertEqual(b, Matrix.identity())
+        self.assertEqual(Matrix.identity().transpose(), Matrix.identity())

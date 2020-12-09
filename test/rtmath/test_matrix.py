@@ -164,3 +164,13 @@ class TestMatrix(unittest.TestCase):
                 [-8, 8, 6],
                 [-7, -1, 1]
             ]))
+
+    def test_minor_3x3(self):
+        a = Matrix([
+            [3, 5, 0],
+            [2, -1, -7],
+            [6, -1, 5]
+        ])
+        b = a.submatrix(1, 0)
+        self.assertEqual(b.determinant(), 25)
+        self.assertEqual(a.minor(1, 0), 25)

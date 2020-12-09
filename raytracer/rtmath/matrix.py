@@ -1,4 +1,5 @@
 from raytracer.rtmath.tuple import Tuple
+from copy import deepcopy
 
 
 class Matrix:
@@ -76,7 +77,12 @@ class Matrix:
         return self[0][0] * self[1][1] - self[0][1] * self[1][0]
 
     def submatrix(self, row, col):
-        del(self.m[row])
-        for r in self.m:
+        res = Matrix(deepcopy(self.m))
+        del(res.m[row])
+        for r in res.m:
             del(r[col])
-        return self
+        return res
+
+    def minor(self, row, col):
+        res = self.submatrix(row, col)
+        return res.determinant()
